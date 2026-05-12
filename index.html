@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Central de Atendimento VW</title>
+
     <style>
-        /* RESET GERAL */
         * {
             margin: 0;
             padding: 0;
@@ -18,9 +18,9 @@
             color: #333;
         }
 
-        /* CABEÇALHO / HERO */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('unnamed (3).jpg');
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+            url('unnamed (3).jpg');
             background-size: cover;
             background-position: center;
             height: 480px;
@@ -33,7 +33,6 @@
             text-align: center;
         }
 
-        /* LOGO NO CANTO SUPERIOR ESQUERDO */
         .header-logo-top {
             position: absolute;
             top: 20px;
@@ -80,7 +79,6 @@
             transform: scale(1.05);
         }
 
-        /* CONTEÚDO PRINCIPAL */
         .container {
             max-width: 1150px;
             margin: -50px auto 60px;
@@ -89,7 +87,6 @@
             z-index: 10;
         }
 
-        /* SEÇÃO AJUDA (AGORA COM LINK) */
         .section-divider {
             text-align: center;
             margin-bottom: 45px;
@@ -116,7 +113,6 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        /* GRID DE SERVIÇOS */
         .grid-services {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -159,7 +155,6 @@
             background-color: #001e50 !important;
         }
 
-        /* WHATSAPP FLUTUANTE */
         .whatsapp-float {
             margin-top: 45px;
             text-align: left;
@@ -174,7 +169,6 @@
             transform: translateY(-5px);
         }
 
-        /* RODAPÉ */
         .footer {
             border-top: 1px solid #eee;
             padding: 70px 20px;
@@ -202,92 +196,155 @@
             color: #333;
         }
 
-        /* RESPONSIVIDADE */
         @media (max-width: 950px) {
-            .grid-services { grid-template-columns: repeat(2, 1fr); }
-            .header-logo-top { width: 150px; }
-            .hero { height: auto; padding: 100px 20px; }
+            .grid-services {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .header-logo-top {
+                width: 150px;
+            }
+
+            .hero {
+                height: auto;
+                padding: 100px 20px;
+            }
         }
 
         @media (max-width: 550px) {
-            .grid-services { grid-template-columns: 1fr; }
-            .hero-content h1 { font-size: 28px; }
-            .top-nav { display: none; }
+            .grid-services {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 28px;
+            }
+
+            .top-nav {
+                display: none;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <script>
-        const linkWhatsapp = "https://wa.me/5511922283160"; 
-        function redirecionar() {
-            window.location.href = linkWhatsapp;
+<script>
+    function redirecionar(tipo) {
+
+        let mensagem = "";
+
+        if (tipo === "boleto") {
+            mensagem = "Olá, vim pelo site e preciso solicitar a 2ª via do boleto.";
         }
-    </script>
 
-    <header class="hero">
-        <img src="unnamed (1).jpg" alt="Atendimento VW" class="header-logo-top">
+        else if (tipo === "quitacao") {
+            mensagem = "Olá, vim pelo site e quero informações sobre quitação de contrato.";
+        }
 
-        <nav class="top-nav">
-            <a href="#">Página Inicial</a>
-            <a href="#">Política de Privacidade</a>
-            <a href="#">Quem Somos</a>
-        </nav>
+        else if (tipo === "parcelas") {
+            mensagem = "Olá, vim pelo site e quero revisar minhas parcelas.";
+        }
 
-        <div class="hero-content">
-            <h1>Central de Atendimento</h1>
-            <p>Soluções completas para quitação de contratos, revisão de parcelas e 2ª via de boletos. Atendimento rápido e personalizado.</p>
-            <a href="javascript:redirecionar()" class="btn-negociar">
-                <img src="unnamed (3).png" alt="Quero negociar VW">
-            </a>
-        </div>
-    </header>
+        else if (tipo === "contato") {
+            mensagem = "Olá, vim pelo site e quero falar com um atendente.";
+        }
 
-    <main class="container">
-        <div class="section-divider">
-            <a href="javascript:redirecionar()">
-                <span>Como podemos te ajudar?</span>
-            </a>
-        </div>
+        else {
+            mensagem = "Olá, vim pelo site e preciso de atendimento.";
+        }
 
-        <div class="grid-services">
-            <a href="javascript:redirecionar()" class="card">
-                <img src="unnamed (4).jpg" alt="2ª Via Boleto">
-                <div class="btn-card">Solicitar 2ª Via</div>
-            </a>
+        const linkWhatsapp =
+            "https://wa.me/5511977811884?text=" + encodeURIComponent(mensagem);
 
-            <a href="javascript:redirecionar()" class="card">
-                <img src="unnamed.jpg" alt="Quitação de Contrato">
-                <div class="btn-card">Quitar Contrato</div>
-            </a>
+        window.location.href = linkWhatsapp;
+    }
+</script>
 
-            <a href="javascript:redirecionar()" class="card">
-                <img src="unnamed (2).jpg" alt="Revisar Parcelas">
-                <div class="btn-card">Revisar Parcelas</div>
-            </a>
+<header class="hero">
 
-            <a href="javascript:redirecionar()" class="card">
-                <img src="unnamed (4).jpg" alt="Fale Conosco">
-                <div class="btn-card btn-dark">Entrar em Contato</div>
-            </a>
-        </div>
+    <img src="unnamed (1).jpg" alt="Atendimento VW" class="header-logo-top">
 
-        <div class="whatsapp-float">
-            <a href="javascript:redirecionar()">
-                <img src="unnamed (7).png" alt="WhatsApp">
-            </a>
-        </div>
-    </main>
+    <nav class="top-nav">
+        <a href="#">Página Inicial</a>
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Quem Somos</a>
+    </nav>
 
-    <footer class="footer">
-        <img src="unnamed (5).png" alt="Car Bank" class="footer-logo">
-        <p class="footer-text">Sua central de atendimento rápida e segura. Resolução financeira na palma da sua mão.</p>
-        <div class="footer-contact">
-            <p><strong>Atendimento oficial:</strong></p>
-            <p>Telefone: 11 92228-3160</p>
-            <p>Segunda a Sexta: 08h às 18h</p>
-        </div>
-    </footer>
+    <div class="hero-content">
+
+        <h1>Central de Atendimento</h1>
+
+        <p>
+            Soluções completas para quitação de contratos,
+            revisão de parcelas e 2ª via de boletos.
+            Atendimento rápido e personalizado.
+        </p>
+
+        <a href="javascript:redirecionar('contato')" class="btn-negociar">
+            <img src="unnamed (3).png" alt="Quero negociar VW">
+        </a>
+
+    </div>
+
+</header>
+
+<main class="container">
+
+    <div class="section-divider">
+        <a href="javascript:redirecionar('contato')">
+            <span>Como podemos te ajudar?</span>
+        </a>
+    </div>
+
+    <div class="grid-services">
+
+        <a href="javascript:redirecionar('boleto')" class="card">
+            <img src="unnamed (4).jpg" alt="2ª Via Boleto">
+            <div class="btn-card">Solicitar 2ª Via</div>
+        </a>
+
+        <a href="javascript:redirecionar('quitacao')" class="card">
+            <img src="unnamed.jpg" alt="Quitação de Contrato">
+            <div class="btn-card">Quitar Contrato</div>
+        </a>
+
+        <a href="javascript:redirecionar('parcelas')" class="card">
+            <img src="unnamed (2).jpg" alt="Revisar Parcelas">
+            <div class="btn-card">Revisar Parcelas</div>
+        </a>
+
+        <a href="javascript:redirecionar('contato')" class="card">
+            <img src="unnamed (55).png" alt="Fale Conosco">
+            <div class="btn-card btn-dark">Entrar em Contato</div>
+        </a>
+
+    </div>
+
+    <div class="whatsapp-float">
+        <a href="javascript:redirecionar('contato')">
+            <img src="unnamed (7).png" alt="WhatsApp">
+        </a>
+    </div>
+
+</main>
+
+<footer class="footer">
+
+    <img src="unnamed (5).png" alt="Car Bank" class="footer-logo">
+
+    <p class="footer-text">
+        Sua central de atendimento rápida e segura.
+        Resolução financeira na palma da sua mão.
+    </p>
+
+    <div class="footer-contact">
+        <p><strong>Atendimento oficial:</strong></p>
+        <p>Telefone: 11 97781-1884</p>
+        <p>Segunda a Sexta: 08h às 18h</p>
+    </div>
+
+</footer>
 
 </body>
 </html>
