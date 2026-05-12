@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central de Atendimento VW</title>
+    <style>
+        /* RESET GERAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        /* CABEÇALHO / HERO */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('unnamed (3).jpg');
+            background-size: cover;
+            background-position: center;
+            height: 480px;
+            position: relative;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* LOGO NO CANTO SUPERIOR ESQUERDO */
+        .header-logo-top {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 190px;
+            background: white;
+            padding: 5px;
+            border-radius: 2px;
+        }
+
+        .top-nav {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+        }
+
+        .top-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 11px;
+            margin-left: 15px;
+            opacity: 0.9;
+        }
+
+        .hero-content h1 {
+            font-size: 38px;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+
+        .hero-content p {
+            font-size: 15px;
+            max-width: 650px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        .btn-negociar img {
+            height: 55px;
+            transition: transform 0.3s;
+        }
+
+        .btn-negociar img:hover {
+            transform: scale(1.05);
+        }
+
+        /* CONTEÚDO PRINCIPAL */
+        .container {
+            max-width: 1150px;
+            margin: -50px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* SEÇÃO AJUDA (AGORA COM LINK) */
+        .section-divider {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-divider a {
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .section-divider a:hover {
+            transform: scale(1.05);
+        }
+
+        .section-divider span {
+            background: white;
+            padding: 12px 40px;
+            color: #001e50;
+            font-weight: bold;
+            font-size: 18px;
+            border-bottom: 4px solid #00c0f3;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* GRID DE SERVIÇOS */
+        .grid-services {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: #f8fafc;
+            border-radius: 6px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            text-decoration: none;
+        }
+
+        .card img {
+            width: 100%;
+            display: block;
+        }
+
+        .btn-card {
+            background-color: #2e52d5;
+            color: white;
+            border: none;
+            padding: 18px;
+            font-weight: bold;
+            font-size: 15px;
+            text-align: center;
+            cursor: pointer;
+            margin-top: auto;
+            transition: background 0.3s;
+        }
+
+        .card:hover .btn-card {
+            background-color: #1a36b1;
+        }
+
+        .btn-dark {
+            background-color: #001e50 !important;
+        }
+
+        /* WHATSAPP FLUTUANTE */
+        .whatsapp-float {
+            margin-top: 45px;
+            text-align: left;
+        }
+
+        .whatsapp-float img {
+            height: 50px;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-float img:hover {
+            transform: translateY(-5px);
+        }
+
+        /* RODAPÉ */
+        .footer {
+            border-top: 1px solid #eee;
+            padding: 70px 20px;
+            text-align: center;
+            background-color: #fdfdfd;
+        }
+
+        .footer-logo {
+            width: 240px;
+            margin-bottom: 25px;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 35px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-contact {
+            font-size: 14px;
+            line-height: 2;
+            color: #333;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 950px) {
+            .grid-services { grid-template-columns: repeat(2, 1fr); }
+            .header-logo-top { width: 150px; }
+            .hero { height: auto; padding: 100px 20px; }
+        }
+
+        @media (max-width: 550px) {
+            .grid-services { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 28px; }
+            .top-nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        const linkWhatsapp = "https://wa.me/5511922283160"; 
+        function redirecionar() {
+            window.location.href = linkWhatsapp;
+        }
+    </script>
+
+    <header class="hero">
+        <img src="unnamed (1).jpg" alt="Atendimento VW" class="header-logo-top">
+
+        <nav class="top-nav">
+            <a href="#">Página Inicial</a>
+            <a href="#">Política de Privacidade</a>
+            <a href="#">Quem Somos</a>
+        </nav>
+
+        <div class="hero-content">
+            <h1>Central de Atendimento</h1>
+            <p>Soluções completas para quitação de contratos, revisão de parcelas e 2ª via de boletos. Atendimento rápido e personalizado.</p>
+            <a href="javascript:redirecionar()" class="btn-negociar">
+                <img src="unnamed (3).png" alt="Quero negociar VW">
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="section-divider">
+            <a href="javascript:redirecionar()">
+                <span>Como podemos te ajudar?</span>
+            </a>
+        </div>
+
+        <div class="grid-services">
+            <a href="javascript:redirecionar()" class="card">
+                <img src="unnamed (4).jpg" alt="2ª Via Boleto">
+                <div class="btn-card">Solicitar 2ª Via</div>
+            </a>
+
+            <a href="javascript:redirecionar()" class="card">
+                <img src="unnamed.jpg" alt="Quitação de Contrato">
+                <div class="btn-card">Quitar Contrato</div>
+            </a>
+
+            <a href="javascript:redirecionar()" class="card">
+                <img src="unnamed (2).jpg" alt="Revisar Parcelas">
+                <div class="btn-card">Revisar Parcelas</div>
+            </a>
+
+            <a href="javascript:redirecionar()" class="card">
+                <img src="unnamed (4).jpg" alt="Fale Conosco">
+                <div class="btn-card btn-dark">Entrar em Contato</div>
+            </a>
+        </div>
+
+        <div class="whatsapp-float">
+            <a href="javascript:redirecionar()">
+                <img src="unnamed (7).png" alt="WhatsApp">
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <img src="unnamed (5).png" alt="Car Bank" class="footer-logo">
+        <p class="footer-text">Sua central de atendimento rápida e segura. Resolução financeira na palma da sua mão.</p>
+        <div class="footer-contact">
+            <p><strong>Atendimento oficial:</strong></p>
+            <p>Telefone: 11 92228-3160</p>
+            <p>Segunda a Sexta: 08h às 18h</p>
+        </div>
+    </footer>
+
+</body>
+</html>
